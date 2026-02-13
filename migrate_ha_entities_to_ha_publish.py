@@ -370,11 +370,19 @@ def format_tuple(t: Tuple, indent: int = 0) -> str:
         elif isinstance(item, float):
             parts.append(repr(item))
         elif isinstance(item, str):
-            parts.append(repr(item))
+            # Use double quotes for strings
+            parts.append(f'"{item}"')
         else:
             parts.append(repr(item))
     
     return f"({', '.join(parts)})"
+
+
+def format_string(s: str) -> str:
+    """Format string with double quotes and proper escaping."""
+    # Escape backslashes and double quotes
+    s = s.replace('\\', '\\\\').replace('"', '\\"')
+    return f'"{s}"'
 
 
 def write_dict(f, d: Dict, indent: int = 0, comment_out: bool = False):
@@ -400,7 +408,7 @@ def write_dict(f, d: Dict, indent: int = 0, comment_out: bool = False):
         elif isinstance(value, list):
             write_list(f, value, indent + 1, comment_out)
         elif isinstance(value, str):
-            f.write(repr(value))
+            f.write(format_string(value))
         elif isinstance(value, bool):
             f.write('True' if value else 'False')
         elif isinstance(value, (int, float)):
@@ -446,7 +454,7 @@ def write_list(f, lst: List, indent: int = 0, comment_out: bool = False):
         f.write('[')
         for i, item in enumerate(lst):
             if isinstance(item, str):
-                f.write(repr(item))
+                f.write(format_string(item))
             else:
                 f.write(repr(item))
             if i < len(lst) - 1:
