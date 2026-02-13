@@ -1,0 +1,650 @@
+{
+    "mqtt_ha_discovery_prefix": "homeassistant",
+    "mqtt_ha_node_id": "ug_heizung_wp/",
+    "dp_prefix": "ug_heizung_wp_",
+    "device": {
+        "identifiers": [
+            "Vitocal_200"
+        ],
+        "name": "UG_Heizung_WP",
+        "model": "Vitocal 200-S AWB-E-AC 201.D16",
+        "manufacturer": "Viessmann"
+    },
+    "device_short": {
+        "identifiers": [
+            "Vitocal_200"
+        ]
+    },
+    "datapoints": [
+        {
+            "name": "Aussentemp",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "COP",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:multiplication",
+            "state_class": "measurement",
+            "unit_of_measurement": "x"
+        },
+        {
+            "name": "Systemzeit",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:clock-outline"
+        },
+        {
+            "name": "Durchlauferhitzer",
+            "command_topic": "cmnd",
+            "domain": "switch",
+            "optimistic": false,
+            "payload_off": "w;0x7902;1;0",
+            "payload_on": "w;0x7902;1;1",
+            "state_class": "measurement",
+            "state_off": "0",
+            "state_on": "1",
+            "state_topic": "eheizung_betrieb"
+        },
+        {
+            "name": "HK2 Frostschutz Allgemein",
+            "device_class": "running",
+            "domain": "binary_sensor",
+            "icon": "mdi:snowflake-alert",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "HK2 Frostschutz Aussentemp",
+            "device_class": "running",
+            "domain": "binary_sensor",
+            "icon": "mdi:snowflake-thermometer",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "HK2 Heizkreispumpe",
+            "device_class": "running",
+            "domain": "binary_sensor",
+            "icon": "mdi:pump",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "HK2 Heizkreispumpe Betriebsstunden",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "HK2 Heizkurve Neigung",
+            "command_template": "{{ \"w;0x3007;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "entity_category": "config",
+            "icon": "mdi:slope-uphill",
+            "max": "3.5",
+            "min": "0",
+            "state_class": "measurement",
+            "state_topic": "hk2_heizkurve_neigung",
+            "step": "0.1"
+        },
+        {
+            "name": "HK2 Heizkurve Niveau",
+            "command_template": "{{ \"w;0x3006;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "entity_category": "config",
+            "icon": "mdi:plus-minus-variant",
+            "max": "40",
+            "min": "0",
+            "state_class": "measurement",
+            "state_topic": "hk2_heizkurve_niveau",
+            "step": "1"
+        },
+        {
+            "name": "HK2 Mischer warm",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:call-merge",
+            "state_class": "measurement",
+            "unit_of_measurement": "%"
+        },
+        {
+            "name": "HK2 Raumtemp Soll",
+            "command_template": "{{ \"w;0x3000;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "icon": "mdi:thermometer",
+            "max": "30",
+            "min": "10",
+            "mode": "slider",
+            "state_class": "measurement",
+            "state_topic": "hk2_raumtemp_soll",
+            "step": "1"
+        },
+        {
+            "name": "HK2 Raumtemp Soll Party",
+            "command_template": "{{ \"w;0x3022;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "entity_category": "config",
+            "icon": "mdi:thermometer",
+            "max": "30",
+            "min": "10",
+            "mode": "slider",
+            "state_class": "measurement",
+            "state_topic": "hk2_raumtemp_soll_party",
+            "step": "1",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "HK2 Raumtemp Soll Reduziert",
+            "command_template": "{{ \"w;0x301;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "entity_category": "config",
+            "icon": "mdi:thermometer",
+            "max": "30",
+            "min": "10",
+            "mode": "slider",
+            "state_class": "measurement",
+            "state_topic": "hk2_raumtemp_soll_reduziert",
+            "step": "1",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "HK2 Temp VL",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "HK2 Temp VL Soll",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "KK Fluessiggastemp",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "KK Heissgasdruck",
+            "device_class": "pressure",
+            "domain": "sensor",
+            "icon": "mdi:gauge",
+            "state_class": "measurement",
+            "unit_of_measurement": "bar"
+        },
+        {
+            "name": "KK Heissgastemp",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "KK Kondensationstemp",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "KK Leistung VD",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:heat-pump-outline",
+            "state_class": "measurement",
+            "unit_of_measurement": "%"
+        },
+        {
+            "name": "KK Sauggasdruck",
+            "device_class": "pressure",
+            "domain": "sensor",
+            "icon": "mdi:gauge",
+            "state_class": "measurement",
+            "unit_of_measurement": "bar"
+        },
+        {
+            "name": "KK Sauggastemp",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "KK Ueberhitzung Soll",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "KK Verdampfungstemp Ist",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "Meldung VD",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:alert-circle",
+            "state_class": "measurement",
+            "unit_of_measurement": null
+        },
+        {
+            "name": "Meldung VD1",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:alert-circle",
+            "state_class": "measurement",
+            "unit_of_measurement": null
+        },
+        {
+            "name": "Meldung WP",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:alert-circle",
+            "state_class": "measurement",
+            "unit_of_measurement": null
+        },
+        {
+            "name": "PK Temp VL",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "PK Ventilator",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:fan",
+            "state_class": "measurement",
+            "unit_of_measurement": "%"
+        },
+        {
+            "name": "Pufferspeicher Temp",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "SCOP",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:multiplication",
+            "state_class": "measurement",
+            "unit_of_measurement": "x"
+        },
+        {
+            "name": "SCOP HK2",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:multiplication",
+            "state_class": "measurement",
+            "unit_of_measurement": "x"
+        },
+        {
+            "name": "SCOP WW",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:multiplication",
+            "state_class": "measurement",
+            "unit_of_measurement": "x"
+        },
+        {
+            "name": "SK Pumpe",
+            "device_class": "running",
+            "domain": "binary_sensor",
+            "icon": "mdi:pump",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "SK Pumpe Rpm",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:pump",
+            "state_class": "measurement",
+            "unit_of_measurement": "%"
+        },
+        {
+            "name": "SK Temp RL",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "SK Temp VL",
+            "device_class": "temperature",
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "Sammelstoerung",
+            "domain": "binary_sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:alert-circle",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "VD Belastungskl 1",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "VD Belastungskl 2",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "VD Belastungskl 3",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "VD Belastungskl 4",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "VD Belastungskl 5",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "VD Betriebsstunden",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "VD Heizleistung",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:flash",
+            "state_class": "measurement",
+            "unit_of_measurement": "W"
+        },
+        {
+            "name": "VD Heizwaerme",
+            "device_class": "energy",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:meter-electric",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "kWh"
+        },
+        {
+            "name": "VD Starts Anzahl",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": null
+        },
+        {
+            "name": "VD Status",
+            "device_class": null,
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:play-circle-outline",
+            "state_class": "measurement",
+            "unit_of_measurement": null,
+            "value_template": "{% if is_state('binary_sensor.ug_heizung_wp_vd_status_betrieb', 'on') %} Ein {% elif is_state('binary_sensor.ug_heizung_wp_vd_status_abtauen', 'on') %} Abtauen {% else %} Aus {% endif %}"
+        },
+        {
+            "name": "VD Status Abtauen",
+            "device_class": "power",
+            "domain": "binary_sensor",
+            "icon": "mdi:snowflake-melt",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "VD Status Betrieb",
+            "device_class": "power",
+            "domain": "binary_sensor",
+            "icon": "mdi:heat-pump-outline",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "VD el Leistungsaufnahme",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:flash",
+            "state_class": "measurement",
+            "unit_of_measurement": "W"
+        },
+        {
+            "name": "VD elektrische Energie",
+            "device_class": "energy",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:meter-electric",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "kWh"
+        },
+        {
+            "name": "WW Einmalig Aufladen",
+            "command_topic": "cmnd",
+            "domain": "button",
+            "icon": "mdi:shower-head",
+            "payload_press": "w;0xB020;1;2",
+            "state_class": "measurement"
+        },
+        {
+            "name": "WW Speicherladepumpe",
+            "device_class": "running",
+            "domain": "binary_sensor",
+            "icon": "mdi:pump",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "WW Speichertemp Soll 2",
+            "command_template": "{{ \"w;0x600C;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "entity_category": "config",
+            "icon": "mdi:thermometer",
+            "max": "60",
+            "min": "10",
+            "state_class": "measurement",
+            "state_topic": "ww_speichertemp_soll_2",
+            "step": "1",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "WW Speichertemp Soll Normal",
+            "command_template": "{{ \"w;0x6000;2;\"~value*10 }}",
+            "command_topic": "cmnd",
+            "domain": "number",
+            "entity_category": "config",
+            "icon": "mdi:thermometer",
+            "max": "60",
+            "min": "10",
+            "state_class": "measurement",
+            "state_topic": "ww_speichertemp_soll_normal",
+            "step": "1",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "WW Speichertemp oben",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:thermometer",
+            "state_class": "measurement",
+            "unit_of_measurement": "°C"
+        },
+        {
+            "name": "WW Zirkulationspumpe",
+            "device_class": "running",
+            "domain": "binary_sensor",
+            "icon": "mdi:pump",
+            "payload_off": "0",
+            "payload_on": "1"
+        },
+        {
+            "name": "WW Zirkulationspumpe rpm",
+            "device_class": null,
+            "domain": "sensor",
+            "icon": "mdi:pump",
+            "state_class": "measurement",
+            "unit_of_measurement": "%"
+        },
+        {
+            "name": "eHeizung Leistung",
+            "device_class": "power",
+            "domain": "sensor",
+            "icon": "mdi:flash",
+            "state_class": "measurement",
+            "unit_of_measurement": "W"
+        },
+        {
+            "name": "eHeizung Stufe 1 Betriebsstunden",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "eHeizung Stufe 2 Betriebsstunden",
+            "device_class": "duration",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:counter",
+            "state_class": "total_increasing",
+            "unit_of_measurement": "h"
+        },
+        {
+            "name": "HK2 Thermostat",
+            "current_temperature_topic": "hk2_temp",
+            "domain": "climate",
+            "mode_command_template": "{% if value==\"off\" %} w;0xB001;1;0 {% elif value==\"auto\" %} w;0xB001;1;2 {% elif value==\"heat\" %} w;0xB001;1;5 {% elif value==\"cool\" %} w;0xB001;1;7 {% endif %}",
+            "mode_command_topic": "cmnd",
+            "mode_state_template": "{% if value==\"0\" %} off {% elif value==\"2\" %} auto {% elif value==\"5\" %} heat {% elif value==\"7\" %} cool {% endif %}",
+            "mode_state_topic": "hk2_betriebsart",
+            "modes": [
+                "off",
+                "auto",
+                "heat",
+                "cool"
+            ],
+            "precision": 0.1,
+            "preset_mode_command_template": "{% if value==\"Eco\" %} w;0xB001;1;130 {% elif value==\"Comfort\" %} w;0xB001;1;66 {% elif value==\"Reduced\" %} w;0xB001;1;4 {% elif value==\"Normal\" %} w;0xB001;1;5 {% elif value==\"Cool\" %} w;0xB001;1;7 {% elif value==\"None\" %} w;0xB001;1;2 {% endif %}",
+            "preset_mode_command_topic": "cmnd",
+            "preset_mode_state_topic": "hk2_betriebsart",
+            "preset_mode_value_template": "{% if value==\"130\" %} Eco {% elif value==\"66\" %} Comfort {% elif value==\"4\" %} Reduced {% elif value==\"5\" %} Normal {% elif value==\"7\" %} Cool {% elif value==\"0\" or value==\"2\" %} None {% endif %}",
+            "preset_modes": [
+                "eco",
+                "Comfort",
+                "Reduced",
+                "Normal",
+                "Cool",
+                "None"
+            ],
+            "temperature_state_topic": "hk2_raumtemp_effektiv_soll"
+        },
+        {
+            "name": "Warmwasser",
+            "current_temperature_topic": "ww_speichertemp_oben",
+            "domain": "water_heater",
+            "mode_state_topic": "sk_pumpe",
+            "mode_state_template": "{% if value | int == 1 %}on{% else %}off{% endif %}", 
+            "modes": [
+                "off",
+                "on"
+            ],
+            "precision": 0.1,
+            "temperature_state_topic": "ww_speichertemp_soll_normal"
+        },
+        {
+            "name": "Resp",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:responsive"
+        },
+        {
+            "name": "Cmnd",
+            "command_topic": "cmnd",
+            "domain": "text",
+            "entity_category": "config",
+            "icon": "mdi:gesture-tap-button"
+        },
+        {
+            "name": "Debug",
+            "domain": "sensor",
+            "entity_category": "diagnostic",
+            "icon": "mdi:bug"
+        }
+    ]
+}
